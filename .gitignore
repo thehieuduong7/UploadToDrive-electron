@@ -1,0 +1,26 @@
+# Node.js dependencies
+/node_modules
+
+# Compiled output
+/build
+
+# Editor files
+.vscode
+.idea
+
+# macOS specific files
+.DS_Store
+
+# Logs and other generated files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Electron application binaries
+/out
+
+# Application data and configurations
+/.env
+
+# Build output (Electron Builder's output directory)
+/dist
