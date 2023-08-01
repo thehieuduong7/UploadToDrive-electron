@@ -43,7 +43,7 @@ handleListData((event, value)=>{
                     list-group-item-action
                     link-item
                     ">
-                    ${e.name} (${e.mimeType})- size: ${bytesToMB(e.size)}MB
+                    ${e.name} (${e.mimeType}) - size: ${bytesToMB(e.size)}MB - time: ${e.createdTime}
             </a>`)
     $("#list-group").html(data.join(" "))
     $('.link-item').click(function (event){

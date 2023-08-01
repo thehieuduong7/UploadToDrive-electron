@@ -43,6 +43,7 @@ function initConfig(){
   uploadService.storePath = store.get(constStore.STORE_PATH)
   uploadService.winrarExec = store.get(constStore.WINRAR_EXEC_PATH)
   gDriveService.keyPath = store.get(constStore.G_DRIVER_API_PATH)
+  cronService.cronExpression = store.get(constStore.CRON_EXPRESSION)
 }
 initConfig()
 
@@ -99,6 +100,13 @@ ipcMain.on('submit-config', (event, form)=>{
   store.set(constStore.G_DRIVER_FOLDER_ID, form['input-gdriver-folder-id'])
   store.set(constStore.WINRAR_EXEC_PATH, form['input-winrar-path'])
   store.set(constStore.STORE_PATH, form['input-store-path'])
+
+  // refactor format
+  store.set(constStore.CRON_EXPRESSION, {
+    id: 'input-cron-expression',
+    value: form['input-cron-expression'],
+  })
+
   initConfig()
 })
 
@@ -109,6 +117,7 @@ ipcMain.on('get-config', (event) =>{
   form['input-gdriver-folder-id'] = store.get(constStore.G_DRIVER_FOLDER_ID)
   form['input-winrar-path'] = store.get(constStore.WINRAR_EXEC_PATH)
   form['input-store-path'] = store.get(constStore.STORE_PATH)
+  form['input-cron-expression'] = store.get(constStore.CRON_EXPRESSION)
   event.returnValue = form
 })
 
