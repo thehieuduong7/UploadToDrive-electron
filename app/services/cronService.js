@@ -6,6 +6,7 @@ class CronService {
 		this.cronExpression = opts.cronExpression;
 		this.func = opts.func;
 		this.options = opts?.options;
+		this.isRunning = false;
 	}
 	getNext() {
 		const interval = cronParser.parseExpression(this.cronExpression);
@@ -18,12 +19,14 @@ class CronService {
 		return date;
 	}
 	start() {
+		this.isRunning = true;
 		this.task?.start();
 	}
 	stop() {
+		this.isRunning = false;
 		this.task?.stop();
 	}
-	init() {
+	reloadCron() {
 		this.task?.stop();
 		this.task = cron.schedule(
 			this.cronExpression,
